@@ -1,19 +1,29 @@
 package com.hit.gameAlgo;
 
-public abstract class GameBoard extends java.lang.Object implements IGameAlgo {
-
-	static class GameMove {
-
-	}
-
-	GameBoard(int rowLength, int colLength) {
+public abstract class GameBoard implements IGameAlgo{
+	
+	public static class GameMove{
+		
+		GameMove(int row, int column){
+			
+		}
+		
+		int getColumn() {
+			return 0;
+		}
+		int getRow() {
+			return 0;	
+		}
 		
 	}
 	
-	abstract void calcComputerMove();
-	abstract char[][] getBoardState();
-	abstract IGameAlgo.GameState getGameState(GameBoard.GameMove move);
-	abstract boolean updatePlayerMove(GameBoard.GameMove move);
+	public GameBoard(int rowLength, int colLength){
+		
+	}
 	
+	public abstract void calcComputerMove();
+	public abstract char[][] getBoardState();
+	public abstract IGameAlgo.GameState getGameState(GameBoard.GameMove move);
+	public abstract boolean updatePlayerMove(GameBoard.GameMove move);
 	
 }

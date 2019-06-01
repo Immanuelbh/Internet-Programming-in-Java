@@ -1,28 +1,33 @@
 package com.hit.games;
 
 import com.hit.gameAlgo.GameBoard;
+import com.hit.gameAlgo.IGameAlgo;
+
 
 public abstract class CatchTheBunny extends GameBoard{
 
-	/*nested class summary?*/
 	
 	public enum BoardSigns {
-
+		BLANK, COMPUTER, PLAYER;
+		
+		public char getSign() {return 0;};
+		
 	}
 	
-	CatchTheBunny(int rowLength, int colLength){
-		//constructor
+	public CatchTheBunny(int rowLength, int colLength){
+		super(rowLength, colLength);
 	}
 	
-	char[][] getBoardState(){
+	public char[][] getBoardState(){
 		return null;
 	}
 	
-	/*IGameAlgo.GameState getGameState(GameBoard.GameMove move){
+	public IGameAlgo.GameState getGameState(GameBoard.GameMove move){
+		return null;
 		
-	}*/
+	}
 
-	boolean updatePlayerMove(GameBoard.GameMove move) {
+	public boolean updatePlayerMove(GameBoard.GameMove move) {
 		return false;
 	}
 	
