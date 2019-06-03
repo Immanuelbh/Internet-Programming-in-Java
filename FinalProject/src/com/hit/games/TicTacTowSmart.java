@@ -16,5 +16,12 @@ extends TicTacTow {
 		//implement the 'smart' move of the computer.
 	}
 
+	@Override
+	public void printBoard() {
+		// TODO Auto-generated method stub
+		super.printBoard();
+	}
+
+	
 	
 }

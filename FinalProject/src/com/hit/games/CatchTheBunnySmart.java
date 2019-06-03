@@ -15,5 +15,11 @@ public class CatchTheBunnySmart extends CatchTheBunny {
 		//implements the 'smart' move in the game
 	}
 
+	@Override
+	public void printBoard() {
+		// TODO Auto-generated method stub
+		super.printBoard();
+	}
+
 	
 }
