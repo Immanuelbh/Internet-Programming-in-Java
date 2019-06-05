@@ -12,13 +12,12 @@ extends TicTacTow{
 		super(rowLength, colLength);
 		tttRand = super.tttboard;
 	}
+	
 
 	@Override
 	public void calcComputerMove() {
-		// TODO Auto-generated method stub
 		super.calcComputerMove();
 		Random rand = new Random();
-		//Random col = new Random();
 		boolean flg = false;
 		int row = rand.nextInt(rowSize);
 		int col = rand.nextInt(colSize);
@@ -36,29 +35,15 @@ extends TicTacTow{
 				row = rand.nextInt(rowSize);
 				col = rand.nextInt(colSize);
 				System.out.printf("row:%d\tcol:%d\n", row,col);
-
 			}
 		}
-		
 		
 	}
 
 	@Override
 	public boolean updatePlayerMove(GameMove move) {
-		// TODO Auto-generated method stub
 		return super.updatePlayerMove(move);
-		
+		//might be an error - override does not appear in any other concrete sub-class.
 		
 	}
-
-	//to be deleted
-	/*@Override
-	public void printBoard() {
-		// TODO Auto-generated method stub
-		super.printBoard();
-	}*/
-	
-	
-
-	
 }

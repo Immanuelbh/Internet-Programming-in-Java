@@ -1,13 +1,7 @@
 package com.hit.gameAlgo;
 
 public abstract class GameBoard implements IGameAlgo{
-	//should be private?
-	/*
-	int rowSize;
-	int colSize;
-	char gameboard[][];
-	*/
-	
+
 	public static class GameMove{
 		int rowMove;
 		int colMove;
@@ -26,15 +20,7 @@ public abstract class GameBoard implements IGameAlgo{
 		
 	}
 	
-	public GameBoard(int rowLength, int colLength){
-		/*
-		rowSize = rowLength;
-		colSize = colLength;
-		
-		gameboard = new char[rowLength][colLength];
-		*/
-	}
-	
+	public GameBoard(int rowLength, int colLength){	}
 	
 	public abstract void calcComputerMove();
 	public abstract char[][] getBoardState();

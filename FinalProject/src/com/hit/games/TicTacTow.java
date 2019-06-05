@@ -2,7 +2,6 @@ package com.hit.games;
 
 import com.hit.gameAlgo.GameBoard;
 import com.hit.gameAlgo.IGameAlgo;
-import com.hit.games.CatchTheBunny.BoardSigns;
 
 public abstract class TicTacTow extends GameBoard{
 
@@ -10,9 +9,8 @@ public abstract class TicTacTow extends GameBoard{
 	int colSize;
 	char tttboard[][];
 	IGameAlgo.GameState gs;
-	GameBoard gameboard;
-	GameBoard.GameMove move;
 	
+	GameBoard.GameMove move;
 	
 	public enum BoardSigns {
 		BLANK, COMPUTER, PLAYER;
@@ -20,13 +18,13 @@ public abstract class TicTacTow extends GameBoard{
 		public char getSign() {
 			
 			if(this.equals(BLANK)) {
-				return 'B';
+				return ' ';
 			}
 			else if(this.equals(COMPUTER)) {
-				return 'C';
+				return 'O';
 			}
 			else if(this.equals(PLAYER)) {
-				return 'P';
+				return 'X';
 			}
 			
 			return 0;
@@ -49,35 +47,28 @@ public abstract class TicTacTow extends GameBoard{
 				tttboard[i][j] = BoardSigns.BLANK.getSign();
 			}
 		}
-		
 	}
 
 
 	@Override
-	public void calcComputerMove() {
-		// leave empty?
-		
-	}
-
+	public void calcComputerMove() { }
 
 	@Override
 	public char[][] getBoardState() {
-		// TODO Auto-generated method stub
 		return tttboard;
 	}
 
-
 	@Override
 	public GameState getGameState(GameMove move) {
-
-		//what do I do with move?
-		
 		return gs;
 	}
 
 
 	@Override
 	public boolean updatePlayerMove(GameMove move) {
+		//might be empty?
+		
+		
 		//TODO check if working
 		if(move.getRow() < rowSize && move.getColumn() < colSize) { //move is legal
 			tttboard[move.getRow()][move.getColumn()] = BoardSigns.PLAYER.getSign();
@@ -89,6 +80,7 @@ public abstract class TicTacTow extends GameBoard{
 			System.out.println("An illegal move");
 			return false;
 		}
+		
 	}
 	
 	//TODO delete this method
@@ -107,10 +99,14 @@ public abstract class TicTacTow extends GameBoard{
 				}
 				else {
 					System.out.printf("%c\n", c);
+					
 				}
 
 			}
 			
+			/*if(i != rowSize -1) {			
+				System.out.println("---------");
+			}*/
 		}
 		System.out.println();
 	}
