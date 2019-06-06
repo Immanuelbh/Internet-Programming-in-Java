@@ -1,11 +1,10 @@
 package com.hit.ticTacTow;
 
-import com.hit.gameAlgo.GameBoard;
-import com.hit.gameAlgo.GameBoard.GameMove;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.hit.gameAlgo.GameBoard.GameMove;
 import com.hit.gameAlgo.IGameAlgo;
 import com.hit.games.TicTacTow;
 import com.hit.games.TicTacTowRandom;

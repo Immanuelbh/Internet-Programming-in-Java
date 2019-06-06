@@ -4,11 +4,7 @@ import com.hit.gameAlgo.GameBoard;
 import com.hit.gameAlgo.GameBoard.GameMove;
 import com.hit.gameAlgo.IGameAlgo;
 import com.hit.gameAlgo.IGameAlgo.GameState;
-import com.hit.games.CatchTheBunny;
 import com.hit.games.CatchTheBunnyRandom;
-import com.hit.games.TicTacTow;
-import com.hit.games.TicTacTowRandom;
-import com.hit.games.TicTacTowSmart;
 
 public class mainTesting {
 
@@ -65,7 +61,7 @@ public class mainTesting {
 		tttR.printBoard();
 		*/
 		
-		Handler gameHandler = new Handler(new CatchTheBunnyRandom(9,9));
+		//Handler gameHandler = new Handler(new CatchTheBunnyRandom(9,9));
 		
 		//gameHandler.PlayOne(gameHandler.getGame()?, new GameMove(1,1));
 		

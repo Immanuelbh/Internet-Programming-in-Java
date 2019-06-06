@@ -1,17 +1,13 @@
 package com.hit.games;
 
-import java.util.Random;
-
 import com.hit.gameAlgo.GameBoard;
 import com.hit.gameAlgo.IGameAlgo;
-import com.hit.games.TicTacTow.BoardSigns;
-
 
 public abstract class CatchTheBunny extends GameBoard{
 
 	int rowSize;
 	int colSize;
-	private static int num_movements;
+	//private static int num_movements;
 	char bunnyboard[][];
 	IGameAlgo.GameState gs;
 	GameMove playerLocation;
@@ -60,7 +56,7 @@ public abstract class CatchTheBunny extends GameBoard{
 		computerLocation = new GameMove(0,0);
 		bunnyboard[rowLength-1][colLength-1] = BoardSigns.PLAYER.getSign();
 		playerLocation = new GameMove(rowLength-1, colLength-1);
-		num_movements = rowLength;
+		//num_movements = rowLength;
 	}
 
 	@Override
@@ -75,12 +71,12 @@ public abstract class CatchTheBunny extends GameBoard{
 	public GameState getGameState(GameMove move) {
 		return gs;
 	}
-	
+	/*
 	private enum Directions{
 		LEFT,UP,RIGHT,DOWN;
 		
 	}
-	
+	*/
 	private String direction(GameMove move) {
 		int i = move.getRow();
 		int j = move.getColumn();
@@ -112,7 +108,7 @@ public abstract class CatchTheBunny extends GameBoard{
 		int cCol = computerLocation.getColumn();
 		
 		
-		if(nextMove.equals("LEFT") && playerLocation.getColumn()>0) {
+		if(nextMove.equals("LEFT") && playerLocation.getColumn()>-1) {
 			if(pRow == cRow && pCol == cCol+1) {
 				System.out.println("player moved left!");
 				System.out.println("the player won!");
@@ -124,7 +120,7 @@ public abstract class CatchTheBunny extends GameBoard{
 				return GameState.IN_PROGRESS;
 			}
 		}
-		else if(nextMove.equals("UP") && playerLocation.getRow()>0) {
+		else if(nextMove.equals("UP") && playerLocation.getRow()>-1) {
 			if(pRow+1 == cRow && pCol == cCol) {
 				System.out.println("player moved up!");
 				System.out.println("the player won!");
@@ -177,7 +173,7 @@ public abstract class CatchTheBunny extends GameBoard{
 		nextMove = direction(move);
 		gs = setGameState(nextMove);
 		
-		if(gs != GameState.ILLEGAL_PLAYER_MOVE) {
+		if(gs != GameState.ILLEGAL_PLAYER_MOVE) { //check number of movements also
 			bunnyboard[mR][mC] = BoardSigns.PLAYER.getSign();
 			playerLocation = new GameMove(mR, mC);
 
@@ -203,6 +199,7 @@ public abstract class CatchTheBunny extends GameBoard{
 			return false;
 		}
 		
+		//numMovements--;
 		return true;
 		
 		//maybe add "return movePlayer(nextMove, gs); --movePlayer is boolean;

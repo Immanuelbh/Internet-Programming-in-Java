@@ -44,12 +44,12 @@ extends CatchTheBunny {
 		int cR = super.computerLocation.getRow();
 		int cC = super.computerLocation.getColumn();
 		if(movement == MOVEMENTS.LEFT.getMovement()) {
-			if(cC-1 > 0) {
+			if(cC-1 > -1) {
 				return true;
 			}
 		}
 		else if(movement == MOVEMENTS.UP.getMovement()) {
-			if(cR-1 > 0) {
+			if(cR-1 > -1) {
 				return true;
 			}
 		}
@@ -95,19 +95,19 @@ extends CatchTheBunny {
 		Random rand = new Random();
 		boolean flg = false;
 		int movement = rand.nextInt(NUM_DIRECTIONS);
-		GameMove move;
+		//GameMove move;
 		System.out.printf("direction:%d\t%s\n", movement,MOVEMENTS.values()[movement]);
 
 		while(!flg) {
 			if(isLegalMovement(movement)) {
 				//move computer
-				move = intToGameMove(movement);
+				computerMove = intToGameMove(movement);
 				int oldLctnR = super.computerLocation.getRow();
 				int oldLctnC = super.computerLocation.getColumn();
 				
-				super.computerLocation = new GameMove(move.getRow(), move.getColumn());
+				super.computerLocation = new GameMove(computerMove.getRow(), computerMove.getColumn());
 				bunnyboardRand[oldLctnR][oldLctnC] = BoardSigns.BLANK.getSign();
-				bunnyboardRand[move.getRow()][move.getColumn()] = BoardSigns.COMPUTER.getSign();
+				bunnyboardRand[computerMove.getRow()][computerMove.getColumn()] = BoardSigns.COMPUTER.getSign();
 				flg = true;	
 			}
 			else {
