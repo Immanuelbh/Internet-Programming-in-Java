@@ -43,9 +43,6 @@ extends CatchTheBunny {
 		
 		int cR = super.computerLocation.getRow();
 		int cC = super.computerLocation.getColumn();
-		//int nextMoveR = move.getRow();
-		//int nextMoveC = move.getColumn();
-		
 		if(movement == MOVEMENTS.LEFT.getMovement()) {
 			if(cC-1 > 0) {
 				return true;
@@ -120,34 +117,6 @@ extends CatchTheBunny {
 
 			}
 		}
-		
-		/*
-		//GameMove move = new GameMove(1,1); //create a computer move using random numbers
-		if(direction == MOVEMENTS.LEFT.getMovement()) {
-			if(computerMove.getColumn()>0) {
-				bunnyboard[computerMove.getRow()][computerMove.getColumn()] = ' ';
-				bunnyboard[computerMove.getRow()][computerMove.getColumn()-1] = 'R';
-			}
-		}
-		else if(direction == MOVEMENTS.UP.getMovement()) {
-			if(computerMove.getRow()>0) {
-				bunnyboard[computerMove.getRow()][computerMove.getColumn()] = ' ';
-				bunnyboard[computerMove.getRow()-1][computerMove.getColumn()] = 'R';
-			}
-		}
-		else if(direction == MOVEMENTS.RIGHT.getMovement()) {
-			if(computerMove.getColumn()<super.colSize-1) {
-				bunnyboard[computerMove.getRow()][computerMove.getColumn()] = ' ';
-				bunnyboard[computerMove.getRow()][computerMove.getColumn()+1] = 'R';
-			}
-		}
-		else if(direction == MOVEMENTS.DOWN.getMovement()) {
-			if(computerMove.getRow()<super.rowSize-1) {
-				bunnyboard[computerMove.getRow()][computerMove.getColumn()] = ' ';
-				bunnyboard[computerMove.getRow()+1][computerMove.getColumn()] = 'R';
-			}
-		}
-		*/
 	}
 	
 }

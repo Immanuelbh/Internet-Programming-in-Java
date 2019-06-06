@@ -89,6 +89,18 @@ public abstract class CatchTheBunny extends GameBoard{
 			System.out.println("player wants to moves left");
 			return "LEFT";
 		}
+		else if(playerLocation.getRow() == i+1 && playerLocation.getColumn() == j) {
+			System.out.println("player wants to moves up");
+			return "UP";
+		}
+		else if(playerLocation.getRow() == i && playerLocation.getColumn() == j-1) {
+			System.out.println("player wants to moves right");
+			return "RIGHT";
+		}
+		else if(playerLocation.getRow() == i-1 && playerLocation.getColumn() == j) {
+			System.out.println("player wants to moves down");
+			return "DOWN";
+		}
 		
 		return "";
 	}
@@ -112,6 +124,42 @@ public abstract class CatchTheBunny extends GameBoard{
 				return GameState.IN_PROGRESS;
 			}
 		}
+		else if(nextMove.equals("UP") && playerLocation.getRow()>0) {
+			if(pRow+1 == cRow && pCol == cCol) {
+				System.out.println("player moved up!");
+				System.out.println("the player won!");
+				return GameState.PLAYER_WON;
+			}
+			else {
+				System.out.println("player moved up!");
+				System.out.println("the game continues!");
+				return GameState.IN_PROGRESS;
+			}
+		}
+		else if(nextMove.equals("RIGHT") && playerLocation.getRow()<rowSize) {
+			if(pRow == cRow && pCol+1 == cCol) {
+				System.out.println("player moved right!");
+				System.out.println("the player won!");
+				return GameState.PLAYER_WON;
+			}
+			else {
+				System.out.println("player moved right!");
+				System.out.println("the game continues!");
+				return GameState.IN_PROGRESS;
+			}
+		}
+		else if(nextMove.equals("DOWN") && playerLocation.getRow()<colSize) {
+			if(pRow+1 == cRow && pCol == cCol) {
+				System.out.println("player moved down!");
+				System.out.println("the player won!");
+				return GameState.PLAYER_WON;
+			}
+			else {
+				System.out.println("player moved down!");
+				System.out.println("the game continues!");
+				return GameState.IN_PROGRESS;
+			}
+		}
 		
 		return GameState.ILLEGAL_PLAYER_MOVE;
 	}
@@ -130,12 +178,26 @@ public abstract class CatchTheBunny extends GameBoard{
 		gs = setGameState(nextMove);
 		
 		if(gs != GameState.ILLEGAL_PLAYER_MOVE) {
+			bunnyboard[mR][mC] = BoardSigns.PLAYER.getSign();
+			playerLocation = new GameMove(mR, mC);
+
 			if(nextMove.equals("LEFT")) {
 				//can go left
-				bunnyboard[mR][mC] = BoardSigns.PLAYER.getSign();
 				bunnyboard[mR][mC+1] = BoardSigns.BLANK.getSign();
-				playerLocation = new GameMove(mR, mC);
 			}
+			else if(nextMove.equals("UP")) {
+				//can go up
+				bunnyboard[mR+1][mC] = BoardSigns.BLANK.getSign();
+			}
+			else if(nextMove.equals("RIGHT")) {
+				//can go right
+				bunnyboard[mR][mC-1] = BoardSigns.BLANK.getSign();
+			}
+			else if(nextMove.equals("DOWN")) {
+				//can go down
+				bunnyboard[mR-1][mC] = BoardSigns.BLANK.getSign();
+			}
+			
 		}
 		else {
 			return false;

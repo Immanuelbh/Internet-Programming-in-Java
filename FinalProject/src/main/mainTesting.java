@@ -94,7 +94,7 @@ public class mainTesting {
 		
 		//testing updateplayermove
 		System.out.println("Running: UpdatePlayerMove");
-		move = new GameMove(8,6);
+		move = new GameMove(7,7);
 		ctbR.updatePlayerMove(move);
 		ctbR.printBoard();
 
