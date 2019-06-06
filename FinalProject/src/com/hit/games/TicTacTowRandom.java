@@ -37,7 +37,6 @@ extends TicTacTow{
 				System.out.printf("row:%d\tcol:%d\n", row,col);
 			}
 		}
-		
 	}
 
 	@Override

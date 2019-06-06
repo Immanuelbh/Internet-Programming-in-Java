@@ -5,6 +5,7 @@ import com.hit.gameAlgo.GameBoard.GameMove;
 import com.hit.gameAlgo.IGameAlgo;
 import com.hit.gameAlgo.IGameAlgo.GameState;
 import com.hit.games.CatchTheBunny;
+import com.hit.games.CatchTheBunnyRandom;
 import com.hit.games.TicTacTow;
 import com.hit.games.TicTacTowRandom;
 import com.hit.games.TicTacTowSmart;
@@ -23,7 +24,8 @@ public class mainTesting {
 	}
 	
 	public static void main(String[] args) {
-		
+		/*
+			//TicTacTowRandom testing
 		Handler gameHandler = new Handler(new TicTacTowRandom(3,3));
 		
 		//gameHandler.PlayOne(gameHandler.getGame()?, new GameMove(1,1));
@@ -61,9 +63,45 @@ public class mainTesting {
 		System.out.println("Running: CalcComputerMove");
 		tttR.calcComputerMove();
 		tttR.printBoard();
+		*/
+		
+		Handler gameHandler = new Handler(new CatchTheBunnyRandom(9,9));
+		
+		//gameHandler.PlayOne(gameHandler.getGame()?, new GameMove(1,1));
+		
+		//GameBoard ttt = new GameBoard(new TicTacTow(new TicTacTowRandom(3,3)));
+		//TicTacTow ttt = new TicTacTow(new TicTacTowRandom(3,3));
+		GameBoard ctbR = new CatchTheBunnyRandom(9,9);
+		
+		//TicTacTow ttt;
+		GameMove move;
+		
+		System.out.println("Setting up!");
+		//ttt = new TicTacTowRandom(3,3);
+		move = new GameMove(8,9);
+		ctbR.printBoard();
+		
+		//testing updateplayermove
+		System.out.println("Running: UpdatePlayerMove");
+		ctbR.updatePlayerMove(move);
+		ctbR.printBoard();
 		
 		
+		//testing calccomputermove
+		System.out.println("Running: CalcComputerMove");
+		ctbR.calcComputerMove();
+		ctbR.printBoard();
 		
+		//testing updateplayermove
+		System.out.println("Running: UpdatePlayerMove");
+		move = new GameMove(7,9);
+		ctbR.updatePlayerMove(move);
+		ctbR.printBoard();
+
+		//testing calccomputermove
+		System.out.println("Running: CalcComputerMove");
+		ctbR.calcComputerMove();
+		ctbR.printBoard();
 		
 	}
 

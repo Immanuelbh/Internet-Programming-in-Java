@@ -3,25 +3,18 @@ package com.hit.games;
 public class TicTacTowSmart
 extends TicTacTow {
 
+	char tttSmart[][];
+	
 	public TicTacTowSmart(int rowLength, int colLength) {
 		super(rowLength, colLength);
-		// TODO Auto-generated constructor stub
+		tttSmart = super.tttboard;
 	}
 
 	@Override
 	public void calcComputerMove() {
-		// TODO Auto-generated method stub
 		super.calcComputerMove();
 		
-		//implement the 'smart' move of the computer.
+		//implement the 'smart' move of the computer. from collections?
 	}
-
-	@Override
-	public void printBoard() {
-		// TODO Auto-generated method stub
-		super.printBoard();
-	}
-
-	
 	
 }
