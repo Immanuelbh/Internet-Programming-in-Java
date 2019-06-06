@@ -11,9 +11,11 @@ public abstract class CatchTheBunny extends GameBoard{
 
 	int rowSize;
 	int colSize;
-	private int num_movements;
+	private static int num_movements;
 	char bunnyboard[][];
 	IGameAlgo.GameState gs;
+	GameMove playerLocation;
+	GameMove computerLocation;
 	
 	/*nested class summary?*/
 	
@@ -55,7 +57,9 @@ public abstract class CatchTheBunny extends GameBoard{
 		}
 		
 		bunnyboard[0][0] = BoardSigns.COMPUTER.getSign();
+		computerLocation = new GameMove(0,0);
 		bunnyboard[rowLength-1][colLength-1] = BoardSigns.PLAYER.getSign();
+		playerLocation = new GameMove(rowLength-1, colLength-1);
 		num_movements = rowLength;
 	}
 
@@ -71,12 +75,78 @@ public abstract class CatchTheBunny extends GameBoard{
 	public GameState getGameState(GameMove move) {
 		return gs;
 	}
-
-	@Override
-	public boolean updatePlayerMove(GameMove move) {
+	
+	private enum Directions{
+		LEFT,UP,RIGHT,DOWN;
+		
+	}
+	
+	private String direction(GameMove move) {
 		int i = move.getRow();
 		int j = move.getColumn();
-
+		
+		if(playerLocation.getRow() == i && playerLocation.getColumn() == j+1) {
+			System.out.println("player wants to moves left");
+			return "LEFT";
+		}
+		
+		return "";
+	}
+	
+	private GameState setGameState(String nextMove) {
+		int pRow = playerLocation.getRow();
+		int pCol = playerLocation.getColumn();
+		int cRow = computerLocation.getRow();
+		int cCol = computerLocation.getColumn();
+		
+		
+		if(nextMove.equals("LEFT") && playerLocation.getColumn()>0) {
+			if(pRow == cRow && pCol == cCol+1) {
+				System.out.println("player moved left!");
+				System.out.println("the player won!");
+				return GameState.PLAYER_WON;
+			}
+			else {
+				System.out.println("player moved left!");
+				System.out.println("the game continues!");
+				return GameState.IN_PROGRESS;
+			}
+		}
+		
+		return GameState.ILLEGAL_PLAYER_MOVE;
+	}
+	/*
+	private void updatePlayerGameMove(GameMove move) extends GameMove{
+		
+	}
+*/
+	@Override
+	public boolean updatePlayerMove(GameMove move) {
+		String nextMove;
+		int mR = move.getRow();
+		int mC = move.getColumn();
+		
+		nextMove = direction(move);
+		gs = setGameState(nextMove);
+		
+		if(gs != GameState.ILLEGAL_PLAYER_MOVE) {
+			if(nextMove.equals("LEFT")) {
+				//can go left
+				bunnyboard[mR][mC] = BoardSigns.PLAYER.getSign();
+				bunnyboard[mR][mC+1] = BoardSigns.BLANK.getSign();
+				playerLocation = new GameMove(mR, mC);
+			}
+		}
+		else {
+			return false;
+		}
+		
+		return true;
+		
+		//maybe add "return movePlayer(nextMove, gs); --movePlayer is boolean;
+		
+		/*	
+			
 		//TODO check if working
 		if(i < rowSize && j < colSize) { //move is legal
 			if(bunnyboard[i][j] == BoardSigns.BLANK.getSign()) {
@@ -96,7 +166,7 @@ public abstract class CatchTheBunny extends GameBoard{
 		else {
 			System.out.println("An illegal move");
 			return false;
-		}
+		}*/
 	}
 
 	@Override

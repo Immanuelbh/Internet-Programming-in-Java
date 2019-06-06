@@ -78,7 +78,7 @@ public class mainTesting {
 		
 		System.out.println("Setting up!");
 		//ttt = new TicTacTowRandom(3,3);
-		move = new GameMove(8,9);
+		move = new GameMove(8,7); //left movement
 		ctbR.printBoard();
 		
 		//testing updateplayermove
@@ -94,7 +94,7 @@ public class mainTesting {
 		
 		//testing updateplayermove
 		System.out.println("Running: UpdatePlayerMove");
-		move = new GameMove(7,9);
+		move = new GameMove(8,6);
 		ctbR.updatePlayerMove(move);
 		ctbR.printBoard();
 
