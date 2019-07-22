@@ -36,6 +36,7 @@ extends TicTacTow{
 				col = rand.nextInt(colSize);
 				System.out.printf("row:%d\tcol:%d\n", row,col);
 			}
+			
 		}
 	}
 

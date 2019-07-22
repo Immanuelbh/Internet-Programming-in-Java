@@ -61,6 +61,7 @@ public abstract class TicTacTow extends GameBoard{
 	@Override
 	public GameState getGameState(GameMove move) {
 		//check if player won the game
+		//System.out.println("current gs: "+ gs.ordinal());
 		
 		//no use for move.
 		//123
@@ -68,57 +69,58 @@ public abstract class TicTacTow extends GameBoard{
 			if(tttboard[0][2] == tttboard[0][0]) {
 				if(tttboard[0][0]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
+				else if(tttboard[0][0]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}
 		}
 		//456
 		else if(tttboard[1][0] == tttboard[1][1]) {// == tttboard[0][2]) { 
 			if(tttboard[1][2] == tttboard[1][0]) {
 				if(tttboard[1][0]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
-		}
+				else if(tttboard[1][0]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}		}
 		//789
 		else if(tttboard[2][0] == tttboard[2][1]) {// == tttboard[0][2]) { 
 			if(tttboard[2][2] == tttboard[2][0]) {
 				if(tttboard[2][0]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
-		}
+				else if(tttboard[2][0]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}		}
 		//147
 		else if(tttboard[0][0] == tttboard[1][0]) {// == tttboard[0][2]) { 
 			if(tttboard[2][0] == tttboard[0][0]) {
 				if(tttboard[0][0]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
-		}
+				else if(tttboard[0][0]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}		}
 		//258
 		else if(tttboard[1][0] == tttboard[1][1]) {// == tttboard[0][2]) { 
 			if(tttboard[1][2] == tttboard[1][0]) {
 				if(tttboard[1][0]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
-		}
+				else if(tttboard[1][0]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}		}
 		//369
 		else if(tttboard[2][0] == tttboard[2][1]) {// == tttboard[0][2]) { 
 			if(tttboard[2][2] == tttboard[2][0]) {
 				if(tttboard[2][0]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
-		}
+				else if(tttboard[2][0]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}		}
 		//159
 		else if(tttboard[0][0] == tttboard[1][1]) {// == tttboard[0][2]) { 
 			if(tttboard[2][2] == tttboard[0][0]) {
 				if(tttboard[0][0]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
-		}
+				else if(tttboard[0][0]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}		}
 		//357
 		else if(tttboard[0][2] == tttboard[1][1]) {// == tttboard[0][2]) { 
 			if(tttboard[2][0] == tttboard[0][2]) {
-				if(tttboard[0][0]==BoardSigns.PLAYER.getSign()) {
+				if(tttboard[0][2]==BoardSigns.PLAYER.getSign()) {
 					gs = GameState.PLAYER_WON;}
-				else { gs = GameState.PLAYER_LOST;}	}
-		}
+				else if(tttboard[0][2]==BoardSigns.COMPUTER.getSign()){ 
+					gs = GameState.PLAYER_LOST;}	}		}
 		else {
 			if(checkTie()) {
 				gs = GameState.TIE;
@@ -130,7 +132,7 @@ public abstract class TicTacTow extends GameBoard{
 			
 		}
 		
-		
+		//System.out.println("gs: " + gs.ordinal());
 		return gs;
 	}
 	
