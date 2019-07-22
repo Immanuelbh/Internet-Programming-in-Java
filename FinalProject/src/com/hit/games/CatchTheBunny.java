@@ -24,7 +24,7 @@ public abstract class CatchTheBunny extends GameBoard{
 		public char getSign() { 
 
 			if(this.equals(BLANK)) {
-				return ' ';
+				return '-';
 			}
 			else if(this.equals(COMPUTER)) {
 				return 'R';
