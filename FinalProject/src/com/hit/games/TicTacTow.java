@@ -97,16 +97,16 @@ public abstract class TicTacTow extends GameBoard{
 			else if(tttboard[0][0]==BoardSigns.COMPUTER.getSign()){ 
 				gs = GameState.PLAYER_LOST;}	}		
 		//258
-		else if(tttboard[1][0] == tttboard[1][1] && tttboard[1][2] == tttboard[1][0]) { 
-			if(tttboard[1][0]==BoardSigns.PLAYER.getSign()) {
+		else if(tttboard[0][1] == tttboard[1][1] && tttboard[2][1] == tttboard[0][1]) { 
+			if(tttboard[0][1]==BoardSigns.PLAYER.getSign()) {
 				gs = GameState.PLAYER_WON;}
-			else if(tttboard[1][0]==BoardSigns.COMPUTER.getSign()){ 
+			else if(tttboard[0][1]==BoardSigns.COMPUTER.getSign()){ 
 				gs = GameState.PLAYER_LOST;}	}		
 		//369
-		else if(tttboard[2][0] == tttboard[2][1] && tttboard[2][2] == tttboard[2][0]) {
-			if(tttboard[2][0]==BoardSigns.PLAYER.getSign()) {
+		else if(tttboard[0][2] == tttboard[1][2] && tttboard[2][2] == tttboard[0][2]) {
+			if(tttboard[0][2]==BoardSigns.PLAYER.getSign()) {
 				gs = GameState.PLAYER_WON;}
-			else if(tttboard[2][0]==BoardSigns.COMPUTER.getSign()){ 
+			else if(tttboard[0][2]==BoardSigns.COMPUTER.getSign()){ 
 				gs = GameState.PLAYER_LOST;}	}		
 		//159
 		else if(tttboard[0][0] == tttboard[1][1] && tttboard[2][2] == tttboard[0][0]) { 

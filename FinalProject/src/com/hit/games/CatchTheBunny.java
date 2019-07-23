@@ -2,17 +2,20 @@ package com.hit.games;
 
 import com.hit.gameAlgo.GameBoard;
 import com.hit.gameAlgo.IGameAlgo;
+import com.hit.games.TicTacTow.BoardSigns;
 
 public abstract class CatchTheBunny extends GameBoard{
 
-	int rowSize;
+	final int MAX_STEPS = 30;
+	int rowSize; //trasfer to sub classes
 	int colSize;
 	//private static int num_movements;
 	char bunnyboard[][];
 	IGameAlgo.GameState gs;
 	GameMove playerLocation;
-	GameMove computerLocation;
-	
+	protected GameMove computerLocation;
+	protected int[] compLocation;
+	int stepCounter;
 	/*nested class summary?*/
 	
 	public enum BoardSigns {
@@ -42,9 +45,12 @@ public abstract class CatchTheBunny extends GameBoard{
 		super(rowLength, colLength);
 		rowSize = rowLength;
 		colSize = colLength;
+		compLocation = new int[] {0,0};
 		
 		bunnyboard = new char[rowLength][colLength];
 		gs = IGameAlgo.GameState.IN_PROGRESS;
+		
+		stepCounter = MAX_STEPS;
 
 		for(int i = 0; i<rowLength ; i++) {
 			for(int j = 0; j<colLength ; j++) {
@@ -69,6 +75,17 @@ public abstract class CatchTheBunny extends GameBoard{
 
 	@Override
 	public GameState getGameState(GameMove move) {
+		System.out.println("player location: ("+playerLocation.getRow()+","+playerLocation.getColumn()+")");
+		System.out.println("computer location: ("+computerLocation.getRow()+","+computerLocation.getColumn()+")");
+
+		if(playerLocation.getRow() == computerLocation.getRow() && 
+				playerLocation.getColumn() == computerLocation.getColumn()) {
+			gs = GameState.PLAYER_WON;
+		}
+		else if(stepCounter == 0) {
+			gs = GameState.PLAYER_LOST;
+		}
+		
 		return gs;
 	}
 	/*
@@ -166,6 +183,52 @@ public abstract class CatchTheBunny extends GameBoard{
 */
 	@Override
 	public boolean updatePlayerMove(GameMove move) {
+		//check if within 4 directions
+		//move
+		Boolean legalMove = false;
+		
+		int row = move.getRow();
+		int col = move.getColumn();
+		int pRow = playerLocation.getRow();
+		int pCol = playerLocation.getColumn();
+		System.out.println("attempting to place K in ["+row+","+col+"]");
+
+		if(pRow == row-1 && pCol == col) {//up
+			legalMove = true;
+			bunnyboard[row][col] = BoardSigns.PLAYER.getSign();
+			System.out.println("placed K in ["+row+","+col+"]");
+			bunnyboard[pRow][pCol] = BoardSigns.BLANK.getSign();
+			playerLocation = new GameMove(row, col);
+		}
+		else if(pRow == row+1 && pCol == col) {//down
+			legalMove = true;
+			bunnyboard[row][col] = BoardSigns.PLAYER.getSign();
+			System.out.println("placed K in ["+row+","+col+"]");
+			bunnyboard[pRow][pCol] = BoardSigns.BLANK.getSign();
+			playerLocation = new GameMove(row, col);
+		}
+		else if(pRow == row && pCol == col-1) {//left
+			legalMove = true;
+			bunnyboard[row][col] = BoardSigns.PLAYER.getSign();
+			System.out.println("placed K in ["+row+","+col+"]");
+			bunnyboard[pRow][pCol] = BoardSigns.BLANK.getSign();
+			playerLocation = new GameMove(row, col);
+		}
+		else if(pRow == row && pCol == col+1) {//right
+			legalMove = true;
+			bunnyboard[row][col] = BoardSigns.PLAYER.getSign();
+			System.out.println("placed K in ["+row+","+col+"]");
+			bunnyboard[pRow][pCol] = BoardSigns.BLANK.getSign();
+			playerLocation = new GameMove(row, col);
+		}
+		
+		if(legalMove) {stepCounter--;}
+		
+		return legalMove;
+		
+		
+		//old
+		/*
 		String nextMove;
 		int mR = move.getRow();
 		int mC = move.getColumn();
@@ -201,7 +264,7 @@ public abstract class CatchTheBunny extends GameBoard{
 		
 		//numMovements--;
 		return true;
-		
+		*/
 		//maybe add "return movePlayer(nextMove, gs); --movePlayer is boolean;
 		
 		/*	
